@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="api.css">
+</head>
+<body>
+    <button onclick="login()">Login</button>
+    <div id="login">
+    <table>
+        <tr>
+            <td><input type="text" placeholder="enter email" id="email"></td>
+        </tr>
+        <tr>
+            <td><input type="password" placeholder="enter password" id="password"></td>
+        </tr>
+        <tr>
+            <td><input type="submit" value="login" onclick="submit()"></td>
+        </tr>
+        <tr>
+            <td><a href="instruction.html" target="_self"><input type="submit" value="next"></a></td>
+        </tr>
+    </table>
+    <a href="registration.html" target="_self">Register</a>
+    </div>
+
+    <script>
+        document.getElementById('login').style.display='none';
+        function login(){
+            var x=document.getElementById('login').style.display;
+            if(x=='none'){
+                document.getElementById('login').style.display='block';
+            }
+            else{
+                document.getElementById('login').style.display='none';
+            }
+        }
+        function submit(){
+            var email=document.getElementById('email').value;
+            var password=document.getElementById('password').value;
+            var user={
+                "email":email,
+                "password":password,
+            }
+            // if(localStorage.getItem("users")){
+            //    var users = JSON.parse(localStorage.getItem("users"));
+            //    users.push(user);
+            //    localStorage.setItem("users",JSON.stringify(users));
+            // }
+            // else{
+            //     var users=[];
+            //     users.push(user);
+            //     localStorage.setItem("users",JSON.stringify(users));
+            // }
+            localStorage.setItem("users",JSON.stringify(user));
+            alert("data stored successfully");
+            clear();
+        }
+        function clear(){
+            document.getElementById('email').value="";
+            document.getElementById('password').value="";
+        }
+    </script>
+</body>
+</html>
